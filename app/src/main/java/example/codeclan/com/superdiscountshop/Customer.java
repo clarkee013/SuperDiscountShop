@@ -8,14 +8,15 @@ import java.util.ArrayList;
 
 public class Customer extends Human {
 
-    private ArrayList<Items> basket;
+    private ArrayList<Item> basket;
     private int wallet;
     private boolean loyaltyCard;
+    Item item;
 
 
-    public Customer(String name, int wallet, boolean loyaltyCard){
+    public Customer(String name, int wallet, boolean loyaltyCard) {
         super(name);
-        this.basket = new ArrayList<Items>();
+        this.basket = new ArrayList<Item>();
         this.wallet = wallet;
         this.loyaltyCard = loyaltyCard;
     }
@@ -40,8 +41,8 @@ public class Customer extends Human {
         return basket.size();
     }
 
-    public void addToBasket(Items items){
-        basket.add(items);
+    public void addToBasket(Item item) {
+        basket.add(item);
     }
 
     public void emptyBasket() {
@@ -50,8 +51,8 @@ public class Customer extends Human {
 
     public int getBasketTotal() {
         int total = 0;
-        for (Items items : basket){
-            total += items.getPrice();
+        for (Item item : basket) {
+            total += item.getPrice();
         }
         return total;
     }
@@ -61,12 +62,26 @@ public class Customer extends Human {
     }
 
     public int lastItemIndexInBasket() {
-        return (getBasketSize()-1);
+        return (getBasketSize() - 1);
     }
 
     public void removeLastItemFromBasket() {
         basket.remove(lastItemIndexInBasket());
     }
+
+    public int getItemIndex(Item item) {
+        return basket.indexOf(item);
+    }
+
+    public void removeItemFromBasketByItemIndex(Item item) {
+        basket.remove(getItemIndex(item));
+    }
+
+    public void removeItemByName() {
+        basket.remove(item);
+    }
+
+
 }
 
-// TODO get remove item from basket by name completed.
+

@@ -3,6 +3,8 @@ package example.codeclan.com.superdiscountshop;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -12,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class CustomerTest {
 
     Customer customer;
+    Item item;
     ApplePie applePie;
     Carrots carrots;
     CherryPie cherryPie;
@@ -24,12 +27,13 @@ public class CustomerTest {
     NaanBread naanBread;
     RedOnion redOnion;
     ShiitakeMushrooms shiitakeMushrooms;
-    SpagBol spagBol;
+    SpaghettiBolognese spaghettiBolognese;
     SteakPie steakPie;
     WhiteBread whiteBread;
+    ArrayList<Item> basket;
 
     @Before
-    public void before(){
+    public void before() {
         customer = new Customer("David", 100, true);
         applePie = new ApplePie();
         carrots = new Carrots();
@@ -43,154 +47,155 @@ public class CustomerTest {
         naanBread = new NaanBread();
         redOnion = new RedOnion();
         shiitakeMushrooms = new ShiitakeMushrooms();
-        spagBol = new SpagBol();
+        spaghettiBolognese = new SpaghettiBolognese();
         steakPie = new SteakPie();
         whiteBread = new WhiteBread();
+        basket = new ArrayList<>();
     }
 
     @Test
-    public void getCustomerName(){
+    public void getCustomerName() {
         assertEquals("David", customer.getName());
     }
 
     @Test
-    public void setCustomerName(){
+    public void setCustomerName() {
         customer.setName("Fee");
         assertEquals("Fee", customer.getName());
     }
 
     @Test
-    public void getWallet(){
+    public void getWallet() {
         assertEquals(100, customer.getWallet());
     }
 
     @Test
-    public void setWallet(){
+    public void setWallet() {
         customer.setWallet(5);
         assertEquals(5, customer.getWallet());
     }
 
     @Test
-    public void getLoyaltyCard(){
+    public void getLoyaltyCard() {
         assertEquals(true, customer.getLoyaltyCard());
     }
 
     @Test
-    public void setLoyaltyCard(){
+    public void setLoyaltyCard() {
         customer.setLoyaltyCard(false);
         assertEquals(false, customer.getLoyaltyCard());
     }
 
     @Test
-    public void getBasketSize(){
+    public void getBasketSize() {
         assertEquals(0, customer.getBasketSize());
     }
 
     @Test
-    public void canEmptyBasket(){
+    public void canEmptyBasket() {
         customer.addToBasket(applePie);
         customer.emptyBasket();
         assertEquals(0, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_applePie(){
+    public void canAddToBasket_applePie() {
         customer.addToBasket(applePie);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_carrots(){
+    public void canAddToBasket_carrots() {
         customer.addToBasket(carrots);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_cherryPie(){
+    public void canAddToBasket_cherryPie() {
         customer.addToBasket(cherryPie);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_chickenKorma(){
+    public void canAddToBasket_chickenKorma() {
         customer.addToBasket(chickenKorma);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_chickenTikka(){
+    public void canAddToBasket_chickenTikka() {
         customer.addToBasket(chickenTikka);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_edamCheese(){
+    public void canAddToBasket_edamCheese() {
         customer.addToBasket(edamCheese);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_fishPie(){
+    public void canAddToBasket_fishPie() {
         customer.addToBasket(fishPie);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_lasagnaSheets(){
+    public void canAddToBasket_lasagnaSheets() {
         customer.addToBasket(lasagnaSheets);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_mixedPeppers(){
+    public void canAddToBasket_mixedPeppers() {
         customer.addToBasket(mixedPeppers);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_naanBread(){
+    public void canAddToBasket_naanBread() {
         customer.addToBasket(naanBread);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_redOnion(){
+    public void canAddToBasket_redOnion() {
         customer.addToBasket(redOnion);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_shiitakeMushrooms(){
+    public void canAddToBasket_shiitakeMushrooms() {
         customer.addToBasket(shiitakeMushrooms);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_spagBol(){
-        customer.addToBasket(spagBol);
+    public void canAddToBasket_spagBol() {
+        customer.addToBasket(spaghettiBolognese);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_steakPie(){
+    public void canAddToBasket_steakPie() {
         customer.addToBasket(steakPie);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void canAddToBasket_whiteBread(){
+    public void canAddToBasket_whiteBread() {
         customer.addToBasket(whiteBread);
         assertEquals(1, customer.getBasketSize());
     }
 
     @Test
-    public void getBasketTotal_singleItem(){
+    public void getBasketTotal_singleItem() {
         customer.addToBasket(whiteBread);
         assertEquals(1, customer.getBasketTotal());
     }
 
     @Test
-    public void getBasketTotal_severalItems(){
+    public void getBasketTotal_severalItems() {
         customer.addToBasket(whiteBread);
         customer.addToBasket(steakPie);
         customer.addToBasket(mixedPeppers);
@@ -198,7 +203,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void removeFirstItemFromBasket(){
+    public void removeFirstItemFromBasket() {
         customer.addToBasket(whiteBread);
         customer.addToBasket(steakPie);
         customer.addToBasket(mixedPeppers);
@@ -207,7 +212,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void getLastItemIndex(){
+    public void getLastItemIndex() {
         customer.addToBasket(whiteBread);
         customer.addToBasket(steakPie);
         customer.addToBasket(mixedPeppers);
@@ -216,7 +221,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void removeLastItemFromBasket(){
+    public void removeLastItemFromBasket() {
         customer.addToBasket(whiteBread);
         customer.addToBasket(steakPie);
         customer.addToBasket(mixedPeppers);
@@ -224,12 +229,30 @@ public class CustomerTest {
         assertEquals(2, customer.getBasketSize());
     }
 
+    @Test
+    public void getItemIndex() {
+        customer.addToBasket(whiteBread);
+        assertEquals(0, customer.getItemIndex(whiteBread));
+    }
 
+    @Test
+    public void removeItemFromBasketByItemIndex() {
+        customer.addToBasket(whiteBread);
+        customer.removeItemFromBasketByItemIndex(whiteBread);
+        assertEquals(0, customer.getBasketSize());
+    }
 
-
+    @Test
+    public void removeItemFromBasketByName(){
+        customer.addToBasket(whiteBread);
+        customer.removeItemByName();
+        assertEquals(1, customer.getBasketSize());
+    }
 
 
 
 
 
 }
+
+
